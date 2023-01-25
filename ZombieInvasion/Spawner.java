@@ -28,7 +28,7 @@ public class Spawner{
          }
          else if(wave_end){
              //clear_objects();
-             game.gameState = Game.STATE.Store;
+             game.gameScreen = Game.SCREEN.Store;
          }
          //else if(System.currentTimeMillis() - Game.timer < 120000){
 

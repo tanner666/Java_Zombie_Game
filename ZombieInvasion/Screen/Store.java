@@ -9,29 +9,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Store extends ScreenMethods {
-    private Handler handler;
-    private Game game;
-    private ZombieInvasion.Button back;
 
     public Store(Handler handler, Game game){
         this.handler = handler;
         this.game = game;
         back = new Button(Game.WIDTH/2, Game.HEIGHT/2, 200, 200, Color.white);
-    }
-
-    public void mousePressed(MouseEvent e){
-        int mx = e.getX();
-        int my = e.getY();
-
-        if(mouseOver(mx, my, back.getX(), back.getY(), back.getWidth(), back.getHeight())){
-            game.gameState = Game.STATE.Game;
-            Game.timer = System.currentTimeMillis();
-            //handler.addObject(new Button)
-        }
-    }
-
-    public void mouseReleased(MouseEvent e){
-
     }
 
     public void render(Graphics g){

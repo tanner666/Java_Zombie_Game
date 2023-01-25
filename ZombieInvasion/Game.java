@@ -18,19 +18,19 @@ public class Game extends Canvas implements Runnable{
     private ZombieInvasion.Handler handler;
     private Spawner spawner;
     private Random r;
-    private ZombieInvasion.HUD hud;
-    private ZombieInvasion.Screen.Menu menu;
+    private HUD hud;
+    private Menu menu;
     private Store store;
 
     private static boolean ml_menu = true, ml_store = false;
 
-    public enum STATE{
+    public enum SCREEN{
         Menu,
         Game,
         Store;
     }
 
-    public STATE gameState = STATE.Menu;
+    public SCREEN gameScreen = SCREEN.Menu;
 
     public Game() throws IOException {
         handler = new Handler();
@@ -38,7 +38,7 @@ public class Game extends Canvas implements Runnable{
         store = new Store(handler, this);
         this.addMouseListener(menu);
         this.addKeyListener(new KeyInput(handler));
-        new Window(WIDTH, HEIGHT, "Let's build a game", this);
+        new Window(WIDTH, HEIGHT, "ZombieInvasion", this);
 
         hud = new HUD(handler);
         handler.addObject(new Player(WIDTH - 80, HEIGHT/2, ZombieInvasion.ID.Player, handler));
@@ -95,7 +95,9 @@ public class Game extends Canvas implements Runnable{
 
     //method to run the backend of the game
     private void tick(){
-        if(gameState == STATE.Game) {
+        //game has a game, menu, and store screen (states)
+        //checks whether screen has been switched
+        if(gameScreen == SCREEN.Game) {
             if(ml_menu){
                 this.removeMouseListener(menu);
                 ml_menu = false;
@@ -109,13 +111,14 @@ public class Game extends Canvas implements Runnable{
             handler.tick();
             hud.tick();
         }
-        if(gameState == STATE.Menu){
+        if(gameScreen == SCREEN.Menu){
+            System.out.println("Good");
             if(!ml_menu) {
                 this.addMouseListener(menu);
                  ml_menu = true;
             }
         }
-        if(gameState == STATE.Store){
+        if(gameScreen == SCREEN.Store){
             if(!ml_store){
                 this.addMouseListener(store);
                 ml_store = true;
@@ -132,10 +135,10 @@ public class Game extends Canvas implements Runnable{
         }
         Graphics g = bs.getDrawGraphics();
 
-        if(gameState == STATE.Menu){
+        if(gameScreen == SCREEN.Menu){
             menu.render(g);
         }
-        else if(gameState == STATE.Store){
+        else if(gameScreen == SCREEN.Store){
             store.render(g);
         }
         else {
