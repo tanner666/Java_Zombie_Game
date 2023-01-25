@@ -43,7 +43,7 @@ public class BigBoy extends GameObjectZombie {
     }
 
     public void render(Graphics g){
-        ImageImport i = new ImageImport(x, y, "C:\\Users\\gtann\\Pictures\\Pictures\\BigBoynb.png", g);
+        ImageImport i = new ImageImport(x, y, "Images\\BigBoynb.png", g);
         i.scaleImage(180,205);
         i.createImage();
         g.setColor(Color.red);

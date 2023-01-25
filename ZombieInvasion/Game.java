@@ -144,7 +144,7 @@ public class Game extends Canvas implements Runnable{
         else {
             g.setColor(Color.black);
             g.fillRect(0, 0, WIDTH, HEIGHT);
-            ImageImport i = new ImageImport(0, 0, "C:\\Users\\gtann\\Pictures\\Pictures\\darkroad2.jpg", g);
+            ImageImport i = new ImageImport(0, 0, "Images\\darkroad2.jpg", g);
             i.createImage();
             handler.render(g);
             hud.render(g);

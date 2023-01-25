@@ -27,7 +27,7 @@ public class Rocket extends GameObjectProjectile {
     }
 
     public void render(Graphics g) {
-        ImageImport i = new ImageImport(x-68, y+3, "C:\\Users\\gtann\\Pictures\\Pictures\\rocket_adobespark.png", g);
+        ImageImport i = new ImageImport(x-68, y+3, "Images\\rocket_adobespark.png", g);
         i.scaleImage(100, 100);
         i.createImage();
         g.drawRect(x - 68, y + 44, 100, 18);

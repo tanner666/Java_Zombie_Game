@@ -8,14 +8,14 @@ import java.io.IOException;
 
 public class BaseballBat extends GameObjectProjectile{
 
-    BufferedImage bat1 = ImageIO.read(new File("C:\\Users\\gtann\\Pictures\\Pictures\\baseballbat.png"));
-    BufferedImage bat2 = ImageIO.read(new File("C:\\Users\\gtann\\Pictures\\Pictures\\baseballbat2.png"));
-    BufferedImage bat3 = ImageIO.read(new File("C:\\Users\\gtann\\Pictures\\Pictures\\baseballbat3.png"));
-    BufferedImage bat4 = ImageIO.read(new File("C:\\Users\\gtann\\Pictures\\Pictures\\baseballbat4.png"));
-    BufferedImage bat5 = ImageIO.read(new File("C:\\Users\\gtann\\Pictures\\Pictures\\baseballbat5.png"));
-    BufferedImage bat6 = ImageIO.read(new File("C:\\Users\\gtann\\Pictures\\Pictures\\baseballbat6.png"));
-    BufferedImage bat7 = ImageIO.read(new File("C:\\Users\\gtann\\Pictures\\Pictures\\baseballbat7.png"));
-    BufferedImage bat8 = ImageIO.read(new File("C:\\Users\\gtann\\Pictures\\Pictures\\baseballbat8.png"));
+    BufferedImage bat1 = ImageIO.read(new File("Images\\baseballbat.png"));
+    BufferedImage bat2 = ImageIO.read(new File("Images\\baseballbat2.png"));
+    BufferedImage bat3 = ImageIO.read(new File("Images\\baseballbat3.png"));
+    BufferedImage bat4 = ImageIO.read(new File("Images\\baseballbat4.png"));
+    BufferedImage bat5 = ImageIO.read(new File("Images\\baseballbat5.png"));
+    BufferedImage bat6 = ImageIO.read(new File("Images\\baseballbat6.png"));
+    BufferedImage bat7 = ImageIO.read(new File("Images\\baseballbat7.png"));
+    BufferedImage bat8 = ImageIO.read(new File("Images\\baseballbat8.png"));
     BufferedImage[] bats = {bat1, bat2, bat3, bat4, bat5, bat6, bat7, bat8};
 
 

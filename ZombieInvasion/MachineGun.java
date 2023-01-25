@@ -42,7 +42,7 @@ public class MachineGun extends GameObject{
     }
 
     public void render(Graphics g) {
-        ImageImport i = new ImageImport(x - 65, y - 15, "C:\\Users\\gtann\\Pictures\\Pictures\\machinegunnb.png", g);
+        ImageImport i = new ImageImport(x - 65, y - 15, "Images\\machinegunnb.png", g);
         i.scaleImage(140, 66);
         i.createImage();
 
@@ -55,7 +55,7 @@ public class MachineGun extends GameObject{
         g.fillRect(x + 20, y - 60, mag, 4);
 
         Font fnt = new Font("arial", 1, 10);
-        ImageImport k = new ImageImport(x+20, y-82, "C:\\Users\\gtann\\Pictures\\Pictures\\reload.png", g);
+        ImageImport k = new ImageImport(x+20, y-82, "Images\\reload.png", g);
         //reloading circle
         if(reload < 200){
             k.scaleImage(25, 20);

@@ -51,7 +51,7 @@ public class BasicZombie extends GameObjectZombie {
     }
 
     public void render(Graphics g){
-        ImageImport i = new ImageImport(x, y, "C:\\Users\\gtann\\Pictures\\Pictures\\BasicZombie1cut.png", g);
+        ImageImport i = new ImageImport(x, y, "Images\\BasicZombie1cut.png", g);
         i.scaleImage(100,119);
         i.createImage();
         g.setColor(Color.red);

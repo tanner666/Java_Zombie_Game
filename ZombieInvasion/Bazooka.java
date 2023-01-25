@@ -34,7 +34,7 @@ public class Bazooka extends GameObject{
     }
 
     public void render(Graphics g) {
-        ImageImport i = new ImageImport(x - 65, y - 15, "C:\\Users\\gtann\\Pictures\\Pictures\\bazooka.png", g);
+        ImageImport i = new ImageImport(x - 65, y - 15, "Images\\bazooka.png", g);
         i.scaleImage(140, 66);
         i.createImage();
 
@@ -47,7 +47,7 @@ public class Bazooka extends GameObject{
         g.fillRect(x + 20, y - 60, mag*25, 4);
 
         Font fnt = new Font("arial", 1, 10);
-        ImageImport k = new ImageImport(x+20, y-82, "C:\\Users\\gtann\\Pictures\\Pictures\\reload.png", g);
+        ImageImport k = new ImageImport(x+20, y-82, "Images\\reload.png", g);
         //reloading circle
         if(reload < RELOAD){
             k.scaleImage(25, 20);

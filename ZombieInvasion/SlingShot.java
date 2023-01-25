@@ -32,7 +32,7 @@ public class SlingShot extends GameObject{
     }
 
     public void render(Graphics g) {
-        ImageImport i = new ImageImport(x , y - 10, "C:\\Users\\gtann\\Pictures\\Pictures\\slingshotnb.png", g);
+        ImageImport i = new ImageImport(x , y - 10, "Images\\slingshotnb.png", g);
         i.scaleImage(25, 50);
         i.createImage();
 

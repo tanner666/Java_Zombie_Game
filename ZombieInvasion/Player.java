@@ -59,13 +59,13 @@ public class Player extends ZombieInvasion.GameObject {
         ImageImport i;
         switch(animate_state){
             case 1:
-                i = new ImageImport(x, y, "C:\\Users\\gtann\\Pictures\\Pictures\\characterv3f.png", g);
+                i = new ImageImport(x, y, "Images\\characterv3f.png", g);
                 break;
             case 3:
-                i = new ImageImport(x, y, "C:\\Users\\gtann\\Pictures\\Pictures\\characterv3b.png", g);
+                i = new ImageImport(x, y, "Images\\characterv3b.png", g);
                 break;
             default:
-                i = new ImageImport(x, y, "C:\\Users\\gtann\\Pictures\\Pictures\\characterv3.png", g);
+                i = new ImageImport(x, y, "Images\\characterv3.png", g);
                 break;
         }
         i.scaleImage(80,110);

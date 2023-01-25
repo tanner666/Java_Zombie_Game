@@ -28,7 +28,7 @@ public class Bullet extends GameObjectProjectile {
     }
 
     public void render(Graphics g) {
-        ImageImport i = new ImageImport(x-68, y+3, "C:\\Users\\gtann\\OneDrive\\Pictures\\cartoonbulletarmorpierceincendiary.png", g);
+        ImageImport i = new ImageImport(x-68, y+3, "Images\\cartoonbulletarmorpierceincendiary.png", g);
         i.scaleImage(10, 15);
         i.createImage();
 
