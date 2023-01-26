@@ -27,7 +27,7 @@ public class ScreenMethods extends MouseAdapter {
     public void mousePressed(MouseEvent e){
         int mx = e.getX();
         int my = e.getY();
-
+        //detects when back/play button is clicked
         if(mouseOver(mx, my, back.getX(), back.getY(), back.getWidth(), back.getHeight())){
             game.gameScreen = Game.SCREEN.Game;
             Game.timer = System.currentTimeMillis();

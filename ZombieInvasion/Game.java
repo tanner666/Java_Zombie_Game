@@ -6,7 +6,9 @@ import ZombieInvasion.Screen.Store;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Random;
+import java.util.Set;
 
 public class Game extends Canvas implements Runnable{
     public static final int WIDTH = 916, HEIGHT = 513;
@@ -24,15 +26,17 @@ public class Game extends Canvas implements Runnable{
 
     private static boolean ml_menu = true, ml_store = false;
 
+    //3 possible screen states
     public enum SCREEN{
         Menu,
         Game,
         Store;
     }
-
+    //screen is set to menu initially
     public SCREEN gameScreen = SCREEN.Menu;
 
     public Game() throws IOException {
+        //initial setup of game
         handler = new Handler();
         menu = new Menu(handler,this);
         store = new Store(handler, this);
@@ -49,12 +53,14 @@ public class Game extends Canvas implements Runnable{
         spawner = new Spawner(handler, this);
     }
 
+    //method that starts threads for Window class
     public synchronized void start(){
         thread = new Thread(this);
         thread.start();
         running = true;
     }
 
+    //rejoins threads and stops them
     public synchronized void stop(){
         try{
             thread.join();
@@ -65,6 +71,7 @@ public class Game extends Canvas implements Runnable{
     }
 
     //loop that runs the game
+    //each thread has its own copy, and will continue running this until stopped
     public void run(){
         this.requestFocus();  //this makes it so you don't have to click on screen to start game
         long lastTime = System.nanoTime();
@@ -73,6 +80,7 @@ public class Game extends Canvas implements Runnable{
         double delta = 0;
         long timer = System.currentTimeMillis();
         int frames = 0;
+
         while(running){
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
@@ -83,12 +91,16 @@ public class Game extends Canvas implements Runnable{
             }
             if(running)
                 render();
+
+            /*
+            //could be used to print out fps
             frames++;
             if(System.currentTimeMillis() - timer > 1000){
                 timer += 1000;
-                //System.out.println("FPS: " + frames);
+                System.out.println("FPS: " + frames);
                 frames = 0;
             }
+             */
         }
         stop();
     }
@@ -96,7 +108,7 @@ public class Game extends Canvas implements Runnable{
     //method to run the backend of the game
     private void tick(){
         //game has a game, menu, and store screen (states)
-        //checks whether screen has been switched
+        //checks whether screen has been switched off and turns off mouse listeners
         if(gameScreen == SCREEN.Game) {
             if(ml_menu){
                 this.removeMouseListener(menu);
@@ -134,7 +146,7 @@ public class Game extends Canvas implements Runnable{
             return;
         }
         Graphics g = bs.getDrawGraphics();
-
+        //draw one of three screens
         if(gameScreen == SCREEN.Menu){
             menu.render(g);
         }
