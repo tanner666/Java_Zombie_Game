@@ -18,10 +18,10 @@ public class Store extends ScreenMethods {
         this.handler = handler;
         this.game = game;
         back = new Button(game, Game.WIDTH/2 - 50, Game.HEIGHT/2 + 100, 100, 50,Color.white, Game.SCREEN.Game);
-        weapon1 = new Button(game, Game.WIDTH/2 - 400, Game.HEIGHT/2 - 100, 200, 50,Color.white, 2, new SlingShot(ID.SlingShot, handler));
-        weapon2 = new Button(game, Game.WIDTH/2 + 200, Game.HEIGHT/2 -  100, 200, 50,Color.white, 3, new MachineGun(ID.SlingShot, handler));
-        weapon3 = new Button(game, Game.WIDTH/2 - 400, Game.HEIGHT/2 +  100, 200, 50,Color.white, 4, new Bazooka(ID.SlingShot, handler));
-        weapon4 = new Button(game, Game.WIDTH/2 + 200, Game.HEIGHT/2 + 100, 200, 50,Color.white, 5, new SlingShot(ID.SlingShot, handler));
+        weapon1 = new Button(game, Game.WIDTH/2 - 400, Game.HEIGHT/2 - 100, 200, 50,Color.white, 10, new SlingShot(ID.SlingShot, handler));
+        weapon2 = new Button(game, Game.WIDTH/2 + 200, Game.HEIGHT/2 -  100, 200, 50,Color.white, 20, new MachineGun(ID.SlingShot, handler));
+        weapon3 = new Button(game, Game.WIDTH/2 - 400, Game.HEIGHT/2 +  100, 200, 50,Color.white, 30, new Bazooka(ID.SlingShot, handler));
+        weapon4 = new Button(game, Game.WIDTH/2 + 200, Game.HEIGHT/2 + 100, 200, 50,Color.white, 100, new SlingShot(ID.SlingShot, handler));
     }
 
     public void render(Graphics g){

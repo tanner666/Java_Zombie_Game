@@ -29,7 +29,7 @@ public class GameObjectWeapon extends GameObject {
     protected void collision(int id_num, int damage) {
         for (int i = 0; i < handler.object.size(); i++) {
             GameObject tempObject = handler.object.get(i);
-            if (tempObject.getID() == ID.BasicZombie) {
+            if (tempObject.getID() == ID.BasicZombie || tempObject.getID() == ID.BigBoy) {
                 //collision code
                 if (getBounds().intersects(tempObject.getBounds())) {
                     tempObject.HEALTH -= damage;
@@ -37,7 +37,12 @@ public class GameObjectWeapon extends GameObject {
                     //handler.object.remove(this);
                     System.out.println(tempObject.HEALTH);
                     if (tempObject.HEALTH <= 0) {
-                        handler.addObject(new coin(tempObject.x + 25, tempObject.y + 100, ZombieInvasion.ID.Coin, 10, handler, handler.assign_id_Number()));
+                        handler.addObject(new coin(tempObject.x + 25, tempObject.y + 100, ZombieInvasion.ID.Coin, 1, handler, handler.assign_id_Number()));
+                        if(tempObject.getID() == ID.BigBoy){
+                            handler.addObject(new coin(tempObject.x + 25, tempObject.y + 100, ZombieInvasion.ID.Coin, 1, handler, handler.assign_id_Number()));
+                            handler.addObject(new coin(tempObject.x + 25, tempObject.y + 100, ZombieInvasion.ID.Coin, 1, handler, handler.assign_id_Number()));
+                            handler.addObject(new coin(tempObject.x + 25, tempObject.y + 100, ZombieInvasion.ID.Coin, 1, handler, handler.assign_id_Number()));
+                        }
                         handler.removeObject(tempObject);
                     }
                 }

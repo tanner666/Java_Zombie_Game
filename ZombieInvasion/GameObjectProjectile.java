@@ -39,7 +39,7 @@ public abstract class GameObjectProjectile extends GameObject{
                     handler.removeObject(this);
                     System.out.println(tempObject.HEALTH);
                     if(tempObject.HEALTH <= 0){
-                        handler.addObject(new coin(tempObject.x + 25, tempObject.y + 100, ZombieInvasion.ID.Coin, 10, handler,handler.assign_id_Number()));
+                        handler.addObject(new coin(tempObject.x + 25, tempObject.y + 100, ZombieInvasion.ID.Coin, 1, handler,handler.assign_id_Number()));
                         handler.removeObject(tempObject);
                     }
                 }
