@@ -31,7 +31,6 @@ public class BasicZombie extends GameObjectZombie {
         timer++;
 
         if(y <= 0 || y >= Game.HEIGHT-48){ velY = 0;}
-        if(x <= 0 || x >= Game.WIDTH-30){velX = 0;}
 
         if (HEALTH <= 0) {
             System.out.println("id: " + id_number);
@@ -50,6 +49,10 @@ public class BasicZombie extends GameObjectZombie {
             velX = base_speed;
         }
         wait++;
+
+        if (reachedEnd())
+            Game.stop();
+
     }
 
     public void render(Graphics g){

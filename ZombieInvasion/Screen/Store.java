@@ -39,6 +39,7 @@ public class Store extends ScreenMethods {
         weapon2.render(g, "MachineGun", Color.white, fnt2);
         weapon3.render(g, "Bazooka", Color.white, fnt2);
         weapon4.render(g, "TBD", Color.white, fnt2);
+        g.drawString("Balance: " + Game.balance, 15, 30);
 
     }
     public void mousePressed(MouseEvent e) {

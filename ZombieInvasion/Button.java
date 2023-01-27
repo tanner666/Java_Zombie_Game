@@ -68,9 +68,11 @@ public class Button extends MouseAdapter {
         //detects when button is clicked
         if (mouseOver(mx, my, x, y, width, height)) {
             //buy
-            if (price != 0 && Game.balance >= price) {
-                game.changeWeapon(obj);
-                Game.balance -= price;
+            if (price != 0){
+                if (Game.balance >= price && game.weapon.getID() != obj.getID()) {
+                    game.changeWeapon(obj);
+                    Game.balance -= price;
+                }
             }
             //switch screens
             else {

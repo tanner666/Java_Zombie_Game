@@ -12,8 +12,8 @@ import java.util.Random;
 public class Game extends Canvas implements Runnable{
     public static final int WIDTH = 916, HEIGHT = 513;
     public static long timer;
-    private Thread thread;
-    private boolean running = false;
+    private static Thread thread;
+    private static boolean running = false;
     public static int balance = 0;
 
     private ZombieInvasion.Handler handler;
@@ -38,13 +38,7 @@ public class Game extends Canvas implements Runnable{
     public SCREEN gameScreen = SCREEN.Menu;
     public int weapon_id;
 
-    public void changeScreen(SCREEN screen){
-        gameScreen = screen;
-    }
-    public void changeWeapon(GameObject w){
-        handler.changeObject(weapon.getID_num(), w);
 
-    }
 
     public Game() throws IOException {
         //initial setup of game
@@ -72,7 +66,7 @@ public class Game extends Canvas implements Runnable{
     }
 
     //rejoins threads and stops them
-    public synchronized void stop(){
+    public static synchronized void stop(){
         try{
             thread.join();
             running = false;
@@ -140,8 +134,8 @@ public class Game extends Canvas implements Runnable{
                  ml_menu = true;
             }
         }
-        if(gameScreen == SCREEN.Store){
-            if(!ml_store){
+        if(gameScreen == SCREEN.Store) {
+            if (!ml_store) {
                 this.addMouseListener(store);
                 ml_store = true;
             }
@@ -185,6 +179,12 @@ public class Game extends Canvas implements Runnable{
             return var = min;
         else
             return var;
+    }
+    public void changeScreen(SCREEN screen){
+        gameScreen = screen;
+    }
+    public void changeWeapon(GameObject w){
+        handler.changeObject(weapon.getID_num(), w);
     }
 
     public static void main(String[] args) throws IOException {

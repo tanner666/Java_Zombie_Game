@@ -6,7 +6,7 @@ import ZombieInvasion.ID;
 
 import java.awt.*;
 
-public class GameObjectWeapon extends GameObject {
+public abstract class GameObjectWeapon extends GameObject {
 
     public GameObjectWeapon(ID id, Handler handler){
         super(id, handler);

@@ -5,8 +5,10 @@ import ZombieInvasion.Projectiles.Rock;
 import java.awt.*;
 
 public class SlingShot extends GameObjectWeapon {
+    private final int RELOAD_TIME = 70;
 
-    private int reload = 100;
+    private int reload = RELOAD_TIME;
+
     private final int damage = 20;
     private GameObject player;
 
@@ -20,11 +22,11 @@ public class SlingShot extends GameObjectWeapon {
     }
 
     public void tick() {
-        if(fire && reload >= 100) {
+        if(fire && reload >= RELOAD_TIME) {
             handler.addObject(new Rock(x, y, ZombieInvasion.ID.Rock, damage, handler, handler.assign_id_Number()));
             reload = 0;
         }
-        if(reload < 100)
+        if(reload < RELOAD_TIME)
             reload+=1;
 
         x = player.getX();
@@ -41,7 +43,7 @@ public class SlingShot extends GameObjectWeapon {
         g.setColor(Color.gray);
         g.drawRect(x + 20,y - 60,25,5);
         g.setColor(Color.gray);
-        g.fillRect(x + 20, y - 60, reload/4, 4);
+        g.fillRect(x + 20, y - 60, (int)(reload/3*1.1), 4);
     }
 
     public Rectangle getBounds() {

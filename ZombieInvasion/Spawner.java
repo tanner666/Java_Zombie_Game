@@ -9,7 +9,7 @@ public class Spawner{
     private Game game;
     private Wave1 wave1;
     long timer = 0;
-    private final int MAX_TIME = 10000;
+    private final int MAX_TIME = 20000;
     private boolean wave_end = false;
 
 

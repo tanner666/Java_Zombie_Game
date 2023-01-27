@@ -19,4 +19,11 @@ public abstract class GameObjectZombie extends GameObject{
             return true;
         return false;
     }
+    protected boolean reachedEnd(){
+        if (x >= Game.WIDTH) {
+            System.out.println("Over");
+            return true;
+        }
+        return false;
+    }
 }

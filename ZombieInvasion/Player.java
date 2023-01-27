@@ -26,6 +26,9 @@ public class Player extends ZombieInvasion.GameObject {
         else
             wait--;
 
+        if(health <= 0){
+            Game.stop();
+        }
         health = Game.clamp(health, 0, 100);
 
     }

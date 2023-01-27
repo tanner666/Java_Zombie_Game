@@ -29,7 +29,6 @@ public class BigBoy extends GameObjectZombie {
         wait++;
 
         if(y <= 0 || y >= Game.HEIGHT-48){ velY = 0;}
-        if(x <= 0 || x >= Game.WIDTH-30){velX = 0;}
 
         if(collision()){
             velX = 0;
@@ -39,7 +38,8 @@ public class BigBoy extends GameObjectZombie {
         if(wait >= 50){
             velX = 1;
         }
-        //handler.addObject(new Trail(x, y, 16, 16, 0.01, ID.Trail, Color.red, handler));
+        if (reachedEnd())
+            Game.stop();
     }
 
     public void render(Graphics g){
