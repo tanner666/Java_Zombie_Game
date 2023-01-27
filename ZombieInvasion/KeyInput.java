@@ -36,7 +36,7 @@ public class KeyInput extends KeyAdapter{
             }
             if(tempObject.getID() == ZombieInvasion.ID.SlingShot || tempObject.getID() == ZombieInvasion.ID.MachineGun
             || tempObject.getID() == ID.Bazooka || tempObject.getID() == ID.BaseballBat) {
-                //key events for slingshot
+                //key events for weapon
                 if (key == KeyEvent.VK_SPACE) {
                     tempObject.setFire(true);
                 }

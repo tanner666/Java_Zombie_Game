@@ -49,6 +49,7 @@ public class Game extends Canvas implements Runnable{
     public Game() throws IOException {
         //initial setup of game
         handler = new Handler();
+        handler.addObject(new Player(WIDTH - 80, HEIGHT/2, ZombieInvasion.ID.Player, handler));
         menu = new Menu(handler,this);
         store = new Store(handler, this);
         this.addMouseListener(menu);
@@ -56,7 +57,6 @@ public class Game extends Canvas implements Runnable{
         new Window(WIDTH, HEIGHT, "ZombieInvasion", this);
 
         hud = new HUD(handler);
-        handler.addObject(new Player(WIDTH - 80, HEIGHT/2, ZombieInvasion.ID.Player, handler));
         weapon = new BaseballBat(ID.BaseballBat, handler);
         handler.addObject(weapon);
         //Spawn.wave1(handler);

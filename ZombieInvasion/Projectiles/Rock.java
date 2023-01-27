@@ -24,7 +24,7 @@ public class Rock extends GameObjectProjectile{
 
     public void render(Graphics g) {
         ImageImport i = new ImageImport(x, y, "Images\\round-rock.png", g);
-        i.scaleImage(10, 10);
+        i.scaleImage(15, 15);
         i.createImage();
 
     }

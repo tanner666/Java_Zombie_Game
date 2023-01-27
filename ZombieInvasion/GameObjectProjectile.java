@@ -28,7 +28,7 @@ public abstract class GameObjectProjectile extends GameObject{
     protected void collision(int id_num, int damage){
         for (int i = 0; i < handler.object.size();i++){
             GameObject tempObject = handler.object.get(i);
-            if(tempObject.getID() != this.getID() && tempObject.getID() != ID.Player){
+            if(tempObject.getID() != this.getID() && tempObject.getID() == ID.BasicZombie || tempObject.getID() == ID.BigBoy){
                 System.out.println(this.getID());
                 //collision code
                 if (tempObject.getBounds() == null)

@@ -7,26 +7,29 @@ import java.awt.*;
 public class SlingShot extends GameObjectWeapon {
 
     private int reload = 100;
-    private final int damage = 10;
+    private final int damage = 20;
+    private GameObject player;
 
     public SlingShot(ID id, Handler handler){
         super(id, handler);
         x = Game.WIDTH - 80;
+        player = handler.getObject(0);
         y = Game.HEIGHT/2;
         this.handler = handler;
+
     }
 
     public void tick() {
-        if(fire == true && reload >= 100) {
+        if(fire && reload >= 100) {
             handler.addObject(new Rock(x, y, ZombieInvasion.ID.Rock, damage, handler, handler.assign_id_Number()));
             reload = 0;
         }
         if(reload < 100)
             reload+=1;
 
-        GameObject player = handler.getObject(0);
         x = player.getX();
         y = player.getY() + 50;
+
     }
 
     public void render(Graphics g) {
