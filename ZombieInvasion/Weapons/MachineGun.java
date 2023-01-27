@@ -1,18 +1,21 @@
-package ZombieInvasion;
+package ZombieInvasion.Weapons;
 
+import ZombieInvasion.*;
 import ZombieInvasion.Projectiles.Bullet;
 import java.awt.*;
 
 import static ZombieInvasion.ID.Bullet;
 
-public class MachineGun extends GameObject{
+public class MachineGun extends GameObject {
     private int reload = 200;
     private int mag = 25;
     private int spacer = 10;
     private final int damage = 15;
 
-    public MachineGun(int x, int y, ID id, Handler handler){
-        super(x, y, id, handler);
+    public MachineGun(ID id, Handler handler){
+        super(id, handler);
+        x = Game.WIDTH - 80;
+        y = Game.HEIGHT/2;
         this.handler = handler;
     }
 

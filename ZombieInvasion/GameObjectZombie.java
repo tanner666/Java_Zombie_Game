@@ -2,7 +2,7 @@ package ZombieInvasion;
 
 public abstract class GameObjectZombie extends GameObject{
     Handler handler;
-    protected int wait;
+    protected int wait, base_speed;
     public GameObjectZombie(int x, int y, ID id, Handler handler) {
         super(x, y, id, handler);
         this.handler = handler;

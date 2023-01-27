@@ -1,26 +1,41 @@
 package ZombieInvasion;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class Button {
-    private int x,y, width, height, mx, my;
+public class Button extends MouseAdapter {
+    private int x,y, width, height, price;
     private Color color;
     private ID id;
     //private MouseEvent e;
-
+    private Game game;
     private Handler handler;
+    private Game.SCREEN screen;
+    private GameObject obj;
 
-    public Button(int x, int y, int width, int height /*ID id*/, Color color){
+    public Button(Game game, int x, int y, int width, int height, Color color, Game.SCREEN screen){
+        this.game = game;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        //this.id = id;
         this.color = color;
+        price = 0;
+    }
+    public Button(Game game, int x, int y, int width, int height, Color color, int price, GameObject obj){
+        this.game = game;
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.color = color;
+        this.price = price;
+        this.obj = obj;
     }
 
     public void tick(){
-       // MousePressed(e);
+
     }
 
     public void render(Graphics g){
@@ -37,6 +52,37 @@ public class Button {
         g.drawString(s, x+width/2 - size*s.length()/4, y+height/2+size/3);
     }
 
+    //checks if mouse is over the button
+    protected boolean mouseOver(int mx, int my, int x, int y, int width, int height){
+        if(mx > x && mx < x + width){
+            if(my > y && my < y + height)
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
+    }
+
+    public void buttonClicked(int mx, int my){
+        //detects when button is clicked
+        if (mouseOver(mx, my, x, y, width, height)) {
+            //buy
+            if (price != 0 && Game.balance >= price) {
+                game.changeWeapon(obj);
+                Game.balance -= price;
+            }
+            //switch screens
+            else {
+                game.changeScreen(Game.SCREEN.Game);
+                Game.timer = System.currentTimeMillis();
+            }
+        }
+    }
+
+    public void mouseReleased(MouseEvent e){
+
+    }
 
     //java Rectangle class has a method called intersects
     public Rectangle getBounds(int width, int height){

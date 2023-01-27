@@ -2,13 +2,12 @@ package ZombieInvasion;
 
 import ZombieInvasion.Screen.Menu;
 import ZombieInvasion.Screen.Store;
+import ZombieInvasion.Weapons.BaseballBat;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.Random;
-import java.util.Set;
 
 public class Game extends Canvas implements Runnable{
     public static final int WIDTH = 916, HEIGHT = 513;
@@ -18,6 +17,7 @@ public class Game extends Canvas implements Runnable{
     public static int balance = 0;
 
     private ZombieInvasion.Handler handler;
+    public GameObjectWeapon weapon;
     private Spawner spawner;
     private Random r;
     private HUD hud;
@@ -32,8 +32,19 @@ public class Game extends Canvas implements Runnable{
         Game,
         Store;
     }
+
+
     //screen is set to menu initially
     public SCREEN gameScreen = SCREEN.Menu;
+    public int weapon_id;
+
+    public void changeScreen(SCREEN screen){
+        gameScreen = screen;
+    }
+    public void changeWeapon(GameObject w){
+        handler.changeObject(weapon.getID_num(), w);
+
+    }
 
     public Game() throws IOException {
         //initial setup of game
@@ -46,8 +57,8 @@ public class Game extends Canvas implements Runnable{
 
         hud = new HUD(handler);
         handler.addObject(new Player(WIDTH - 80, HEIGHT/2, ZombieInvasion.ID.Player, handler));
-
-        handler.addObject(new Bazooka(WIDTH - 80, HEIGHT/2, ID.Bazooka, handler));
+        weapon = new BaseballBat(ID.BaseballBat, handler);
+        handler.addObject(weapon);
         //Spawn.wave1(handler);
         //handler.addObject(new BigBoy(50, HEIGHT/2 - 32, ID.BigBoy, handler));
         spawner = new Spawner(handler, this);
@@ -78,7 +89,7 @@ public class Game extends Canvas implements Runnable{
         double amountOfTicks = 60.0;
         double ns = 1000000000 / amountOfTicks;
         double delta = 0;
-        long timer = System.currentTimeMillis();
+        timer = System.currentTimeMillis();
         int frames = 0;
 
         while(running){
@@ -124,7 +135,6 @@ public class Game extends Canvas implements Runnable{
             hud.tick();
         }
         if(gameScreen == SCREEN.Menu){
-            System.out.println("Good");
             if(!ml_menu) {
                 this.addMouseListener(menu);
                  ml_menu = true;

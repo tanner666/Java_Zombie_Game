@@ -1,15 +1,18 @@
-package ZombieInvasion;
+package ZombieInvasion.Weapons;
 
+import ZombieInvasion.*;
 import ZombieInvasion.Projectiles.Rocket;
 import java.awt.*;
 
-public class Bazooka extends GameObject{
+public class Bazooka extends GameObject {
     private int reload = 100;
     private int mag = 1;
     private final int damage = 100, RELOAD = 100;
 
-    public Bazooka(int x, int y, ID id, Handler handler){
-        super(x, y, id, handler);
+    public Bazooka(ID id, Handler handler){
+        super(id, handler);
+        x = Game.WIDTH - 80;
+        y = Game.HEIGHT/2;
         this.handler = handler;
     }
 

@@ -11,9 +11,11 @@ public class BasicZombie extends GameObjectZombie {
     private int timer = 0;
     private int id_number;
 
+
     public BasicZombie(int x, int y, ZombieInvasion.ID id, Handler handler, int id_num){
         super(x,y,id,handler);
         this.handler = handler;
+        base_speed = 3;
         velX = 1;
         velY = 0;
         HEALTH = 50;
@@ -45,7 +47,7 @@ public class BasicZombie extends GameObjectZombie {
         }
 
         if(wait >= 50){
-            velX = 1;
+            velX = base_speed;
         }
         wait++;
     }

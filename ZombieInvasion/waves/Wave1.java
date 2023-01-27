@@ -24,7 +24,7 @@ public class Wave1{
         if(delay >= spacer && enemy_count < max_enemy_count){
             float t = gen.nextFloat()*1;
             int id_num = handler.assign_id_Number();
-            if(t < .4)
+            if(t < .9)
                 handler.addObject(new BasicZombie((int)(20 + 200 * t), (int) (Game.HEIGHT - 150 - 200 * t), ID.BasicZombie, handler, id_num));
             else
                 handler.addObject(new BigBoy(101, Game.HEIGHT/2, ID.BigBoy, handler, handler.assign_id_Number()));

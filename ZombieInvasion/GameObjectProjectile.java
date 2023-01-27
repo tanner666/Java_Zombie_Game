@@ -31,6 +31,8 @@ public abstract class GameObjectProjectile extends GameObject{
             if(tempObject.getID() != this.getID() && tempObject.getID() != ID.Player){
                 System.out.println(this.getID());
                 //collision code
+                if (tempObject.getBounds() == null)
+                    continue;
                 if(getBounds().intersects(tempObject.getBounds())){
                     tempObject.HEALTH -= damage;
                     //handler.object.set(id_num, new PlaceHolder(0,0, ID.Placeholder, handler,id_num));

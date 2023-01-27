@@ -1,4 +1,6 @@
-package ZombieInvasion;
+package ZombieInvasion.Weapons;
+
+import ZombieInvasion.*;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -6,7 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class BaseballBat extends GameObjectProjectile{
+public class BaseballBat extends GameObjectWeapon {
 
     BufferedImage bat1 = ImageIO.read(new File("Images\\baseballbat.png"));
     BufferedImage bat2 = ImageIO.read(new File("Images\\baseballbat2.png"));
@@ -23,8 +25,10 @@ public class BaseballBat extends GameObjectProjectile{
     private int delay = 0, rotationCounter = 0;
     private boolean startRotation = false, endRotation = false;
 
-    public BaseballBat(int x, int y, ID id, Handler handler) throws IOException {
-        super(x, y, id, handler);
+    public BaseballBat(ID id, Handler handler) throws IOException {
+        super(id, handler);
+        x = Game.WIDTH - 80;
+        y = Game.HEIGHT/2;
         id_num = handler.assign_id_Number();
     }
 
@@ -85,36 +89,6 @@ public class BaseballBat extends GameObjectProjectile{
             return null;
     }
 
-    protected void collision(int id_num, int damage) {
-        for (int i = 0; i < handler.object.size(); i++) {
-            GameObject tempObject = handler.object.get(i);
-            if (tempObject.getID() != this.getID()) {
-                //collision code
-                if (getBounds().intersects(tempObject.getBounds())) {
-                    tempObject.HEALTH -= damage;
-                    //handler.object.set(id_num, new PlaceHolder(0,0, ID.Placeholder, handler,id_num));
-                    //handler.object.remove(this);
-                    System.out.println(tempObject.HEALTH);
-                    if (tempObject.HEALTH <= 0) {
-                        handler.addObject(new coin(tempObject.x + 25, tempObject.y + 100, ZombieInvasion.ID.Coin, 10, handler, handler.assign_id_Number()));
-                        handler.removeObject(tempObject);
-                    }
-                }
-            }
-            /*if (tempObject.getID() == ID.BigBoy) {
-                //collision code
-                if (getBounds().intersects(tempObject.getBounds())) {
-                    tempObject.HEALTH -= damage;
-                    //handler.object.remove(this);
-                    System.out.println(tempObject.HEALTH);
-                    if (tempObject.HEALTH <= 0) {
-                        handler.addObject(new coin(tempObject.x + 25, tempObject.y + 100, ZombieInvasion.ID.Coin, 100, handler, handler.assign_id_Number()));
-                        //handler.object.remove(tempObject);
-                    }
-                }
-            }
 
-             */
-        }
-    }
+
 }

@@ -1,15 +1,18 @@
-package ZombieInvasion;
+package ZombieInvasion.Weapons;
 
+import ZombieInvasion.*;
 import ZombieInvasion.Projectiles.Rock;
 import java.awt.*;
 
-public class SlingShot extends GameObject{
+public class SlingShot extends GameObjectWeapon {
 
     private int reload = 100;
     private final int damage = 10;
 
-    public SlingShot(int x, int y, ID id, Handler handler){
-        super(x, y, id, handler);
+    public SlingShot(ID id, Handler handler){
+        super(id, handler);
+        x = Game.WIDTH - 80;
+        y = Game.HEIGHT/2;
         this.handler = handler;
     }
 
@@ -21,14 +24,9 @@ public class SlingShot extends GameObject{
         if(reload < 100)
             reload+=1;
 
-        for (int i = 0; i < handler.object.size();i++){
-            GameObject tempObject = handler.object.get(i);
-
-            if(tempObject.getID() == ID.Player){
-                x = tempObject.getX();
-                y = tempObject.getY() + 50;
-            }
-        }
+        GameObject player = handler.getObject(0);
+        x = player.getX();
+        y = player.getY() + 50;
     }
 
     public void render(Graphics g) {

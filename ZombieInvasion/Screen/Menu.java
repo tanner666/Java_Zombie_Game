@@ -13,7 +13,7 @@ public class Menu extends ScreenMethods {
     public Menu(Handler handler, Game game){
         this.handler = handler;
         this.game = game;
-        back = new Button(Game.WIDTH/2 - 100, Game.HEIGHT/2- 25, 200, 50, Color.white);
+        back = new Button(game, Game.WIDTH/2 - 100, Game.HEIGHT/2- 25, 200, 50,Color.white, Game.SCREEN.Game);
     }
 
     public void render(Graphics g){
@@ -27,5 +27,8 @@ public class Menu extends ScreenMethods {
 
         back.render(g, "PLAY!", Color.white, fnt2);
 
+    }
+    public void mousePressed(MouseEvent e) {
+        back.buttonClicked(e.getX(), e.getY());
     }
 }

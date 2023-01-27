@@ -49,6 +49,16 @@ public class Handler {
         return object.get(id_num);
     }
 
+    public int getIDNum(ID id){
+        for (int i = 0; i < object.size(); i++) {
+            if (object.get(i) == null)
+                continue;
+            if (object.get(i).getID() == id)
+                return i;
+        }
+        return -1;
+    }
+
     public void addObject(ZombieInvasion.GameObject object){
         this.object.add(object);
     }
@@ -59,6 +69,9 @@ public class Handler {
         for (int i = id; i < this.object.size(); i++){
             this.object.get(i).setID_num(i);
         }
+    }
+    public void changeObject(int index, GameObject obj){
+        this.object.set(index, obj);
     }
 
     public LinkedList<ZombieInvasion.GameObject> getList(){

@@ -9,6 +9,7 @@ public class Spawner{
     private Game game;
     private Wave1 wave1;
     long timer = 0;
+    private final int MAX_TIME = 10000;
     private boolean wave_end = false;
 
 
@@ -20,9 +21,9 @@ public class Spawner{
 
     public void tick() {
         timer = System.currentTimeMillis() - Game.timer;
-        timer = Game.clamp((int)timer, 0, 20000);
+        timer = Game.clamp((int)timer, 0, MAX_TIME);
 
-         if (timer < 20000) {
+         if (timer < MAX_TIME) {
              wave1.tick();
              wave_end = true;
          }
@@ -51,7 +52,7 @@ public class Spawner{
         g.setColor(Color.black);
         g.fillRect(Game.WIDTH - 100, 100, 100, 50);
         g.setColor(Color.white);
-        g.drawString(String.valueOf(20 - timer/1000), Game.WIDTH - 100, 100);
+        g.drawString(String.valueOf(MAX_TIME/1000 - timer/1000), Game.WIDTH - 100, 100);
     }
 }
 

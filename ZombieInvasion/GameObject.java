@@ -19,6 +19,10 @@ public abstract class GameObject {
         this.id = id;
         this.handler = handler;
     }
+    public GameObject(ID id, Handler handler){
+        this.id = id;
+        this.handler = handler;
+    }
 
     //since these are abstract, makes it so we have to define these for each of our players/enemies etc.
     public abstract void tick();
